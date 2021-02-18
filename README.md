@@ -5,13 +5,16 @@ This is a server that listens for events from the Grafana plugin [macropower-ana
 ## What does it do
 
 The app receives a POST request when a Grafana dashboard containing the Analytics Panel is loaded.  
-The app stores a new event in the database and replies with the newly created object ID.  
-Once the dashboard gets properly unloaded (closing the tab won't work), a second POST request is received and the app updates the endtime and session duration of the load event.
+The app stores a new event with the provided UUID in the database.
+It can also handle heartbeat events sent by the plugin, which will the update the lastseen date and session duration for that UUID.
+Once the dashboard gets properly unloaded (closing the tab won't work), a last POST request is received and the app updates the endtime and session duration of the load event.
 
 ## Requirements
 
 This app is specifically designed to work with the [macropower-analytics-panel](https://grafana.com/grafana/plugins/macropower-analytics-panel?src=tw).  
-It currently only supports MongoDB for backend storage.
+Furthermore this app only works with version 2.x and up of the plugin.  
+If you are using version 1.x of the plugin, checkout this previous release: [works_with_1.1.1](/jtommi/analytics-panel-listener/releases/tag/works_with_1.1.1)  
+The app currently only supports MongoDB for backend storage.
 
 ## Configuration
 
