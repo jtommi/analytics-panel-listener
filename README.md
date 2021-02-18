@@ -13,7 +13,7 @@ Once the dashboard gets properly unloaded (closing the tab won't work), a last P
 
 This app is specifically designed to work with the [macropower-analytics-panel](https://grafana.com/grafana/plugins/macropower-analytics-panel?src=tw).  
 Furthermore this app only works with version 2.x and up of the plugin.  
-If you are using version 1.x of the plugin, checkout this previous release: [works_with_1.1.1](/jtommi/analytics-panel-listener/releases/tag/works_with_1.1.1)  
+If you are using version 1.x of the plugin, checkout this previous release: [works_with_1.1.1](https://github.com/jtommi/analytics-panel-listener/releases/tag/works_with_1.1.1)  
 The app currently only supports MongoDB for backend storage.
 
 ## Configuration
