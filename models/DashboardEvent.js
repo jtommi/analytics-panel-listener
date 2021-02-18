@@ -1,0 +1,38 @@
+const mongoose = require('mongoose');
+
+const { Schema } = mongoose;
+
+const DashboardEventSchema = new Schema({
+    dashboardId: {
+        type: mongoose.Schema.Types.String,
+        ref: 'dashboardId',
+        required: true,
+    },
+    user: {
+        type: mongoose.Schema.Types.String,
+        ref: 'user',
+        required: true,
+    },
+    userSettings: {
+        lightTheme: Boolean,
+        timezone: String,
+        locale: String
+    },
+    startDate: {
+        type: Date,
+        default: new Date(),
+        required: true,
+    },
+    endDate: {
+        type: Date,
+        default: null,
+        required: false,
+    },
+    sessionDuration: mongoose.Schema.Types.Number
+}, {
+    versionKey: false
+});
+
+const DashboardEvent = mongoose.model('DashboardEvent', DashboardEventSchema);
+
+module.exports = DashboardEvent;

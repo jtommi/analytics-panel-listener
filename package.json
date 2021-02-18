@@ -1,0 +1,29 @@
+{
+  "name": "macropower-analytics-panel-listener",
+  "version": "1.0.0",
+  "description": "This is a server that listens for events from the Grafana plugin macropower-analytics-panel",
+  "license": "GPLv3",
+  "repository": {
+    "url": "https://github.com/jtommi/macropower-analytics-panel-listener"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "index.js"
+  },
+  "author": {
+    "name": "Thomas Johanns"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "5.11.15",
+    "console-stamp": "^0.2.9"
+  },
+  "devDependencies": {
+    "eslint": "^7.9.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0"
+  }
+}

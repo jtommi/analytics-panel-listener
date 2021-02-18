@@ -1,0 +1,5 @@
+.devcontainer
+.vscode
+*.code-workspace
+node_modules
+npm-debug.log
