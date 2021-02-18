@@ -1,6 +1,6 @@
 # Macropower-analytics-panel-listener
 
-This is a server that listens for events from the Grafana plugin [macropower-analytics-panel](https://grafana.com/grafana/plugins/macropower-analytics-panel?src=tw)
+This is a server that listens for events from the Grafana plugin [macropower-analytics-panel](https://grafana.com/grafana/plugins/macropower-analytics-panel?src=tw) ([Github](https://github.com/MacroPower/macropower-analytics-panel))
 
 ## What does it do
 
@@ -10,7 +10,7 @@ Once the dashboard gets properly unloaded (closing the tab won't work), a second
 
 ## Requirements
 
-This app is specifically designed to work with the macropower plugin.  
+This app is specifically designed to work with the [macropower-analytics-panel](https://grafana.com/grafana/plugins/macropower-analytics-panel?src=tw).  
 It currently only supports MongoDB for backend storage.
 
 ## Configuration
