@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const DashboardEventSchema = new Schema({
+    _id: {
+        type: String
+    },
     dashboardId: {
         type: mongoose.Schema.Types.String,
         ref: 'dashboardId',
@@ -19,6 +22,11 @@ const DashboardEventSchema = new Schema({
         locale: String
     },
     startDate: {
+        type: Date,
+        default: new Date(),
+        required: true,
+    },
+    lastSeen: {
         type: Date,
         default: new Date(),
         required: true,

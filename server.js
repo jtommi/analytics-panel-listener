@@ -1,5 +1,4 @@
 const bodyParser = require('body-parser');
-const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
 require('console-stamp')(console, 'HH:MM:ss.l');
@@ -20,26 +19,15 @@ mongodbConnectionString = `mongodb://${dbUsername}:${dbPassword}@${dbHostname}:$
 mongoose.connect(mongodbConnectionString, { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.use(bodyParser.json({ type: ['application/json', 'text/plain'] }));
-app.use(cors());
 
-const loadDashboardController = require('./controllers/loadDashboard');
-const unloadDashboardController = require('./controllers/unloadDashboard');
-
-
-const corsOptions = {
-  origin: true,
-  optionsSuccessStatus: 200,
-};
+const handleEventController = require('./controllers/handleEvent');
 
 const server = app.listen(port, () => {
   console.log('App listening on port %s', port);
 });
 
-// Handle dashboard load
-app.post('/event', loadDashboardController);
-
-// Handle dashboard unload
-app.post('/event/:id', unloadDashboardController);
+// Handle dashboard event
+app.post('/event', handleEventController);
 
 // Handle random GET request
 app.get('*', (req, res) => {
