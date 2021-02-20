@@ -41,24 +41,38 @@ module.exports = async (req, res, next) => {
             // Set lastSeen and calculate session duration before updating the DB
             event.lastSeen = Date(req.body['time'] * 1000);
             event.sessionDuration = (event.lastSeen.getTime() - event.startDate.getTime()) / 1000;
-            event.save();
-            res.statusCode = 201;
-            res.end();
+            event.save()
+                .then(result => {
+                    res.statusCode = 201;
+                    res.end();
+                });
             break;
 
         case 'end':
             console.log("'end'-event received for UUID %s", req.body['uuid']);
             // Get the corresponding dashboard event
             var event = await DashboardEvent.findOne({ _id: req.body['uuid'] });
-            // Set endDate and calculate session duration before updating the DB
-            event.endDate = Date(req.body['time'] * 1000);
-            event.sessionDuration = (event.endDate.getTime() - event.startDate.getTime()) / 1000;
-            event.save();
-            res.statusCode = 201;
-            res.end();
+            if (event.endDate) {
+                const error = Error("Session already ended");
+                error.statusCode = 422;
+                next(error);
+            }
+            else {
+                // Set endDate and calculate session duration before updating the DB
+                event.endDate = Date(req.body['time'] * 1000);
+                event.sessionDuration = (event.endDate.getTime() - event.startDate.getTime()) / 1000;
+                event.save()
+                    .then(result => {
+                        res.statusCode = 201;
+                        res.end();
+                    });
+            }
             break;
 
         default:
+            const error = Error("Missing or unknown type");
+            error.statusCode = 422;
+            next(error);
             break;
     }
 };
