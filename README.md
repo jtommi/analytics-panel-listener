@@ -1,4 +1,4 @@
-# Macropower-analytics-panel-listener
+# Analytics-panel-listener
 
 This is a server that listens for events from the Grafana plugin [macropower-analytics-panel](https://grafana.com/grafana/plugins/macropower-analytics-panel?src=tw) ([Github](https://github.com/MacroPower/macropower-analytics-panel))
 
