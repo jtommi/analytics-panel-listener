@@ -1,11 +1,11 @@
 const DashboardEvent = require('../models/DashboardEvent');
 
-module.exports = async (req, res) => {
+module.exports = async (req, res, next) => {
     switch (req.body['type']) {
         case 'start':
             console.log("'start'-event received for UUID %s", req.body['uuid']);
             // Create a new event entry in the database
-            const dashboardEvent = await DashboardEvent.create({
+            const dashboardEvent = DashboardEvent({
                 _id: req.body['uuid'],
                 dashboardId: req.body['dashboard']['uid'],
                 user: req.body['user']['login'],
@@ -17,6 +17,21 @@ module.exports = async (req, res) => {
                     locale: req.body['user']['locale']
                 }
             })
+            dashboardEvent.save()
+                .then(result => {
+                    console.log(result)
+                    res.statusCode = 201;
+                    res.end();
+                })
+                .catch(err => {
+                    console.log(err)
+                    if (err.name === 'MongoError' && err.code === 11000) {
+                        // Duplicate UUID
+                        const error = Error("Duplicate UUID");
+                        error.statusCode = 422;
+                        next(error);
+                    }
+                });
             break;
 
         case 'heartbeat':
@@ -27,6 +42,8 @@ module.exports = async (req, res) => {
             event.lastSeen = Date(req.body['time'] * 1000);
             event.sessionDuration = (event.lastSeen.getTime() - event.startDate.getTime()) / 1000;
             event.save();
+            res.statusCode = 201;
+            res.end();
             break;
 
         case 'end':
@@ -37,12 +54,11 @@ module.exports = async (req, res) => {
             event.endDate = Date(req.body['time'] * 1000);
             event.sessionDuration = (event.endDate.getTime() - event.startDate.getTime()) / 1000;
             event.save();
+            res.statusCode = 201;
+            res.end();
             break;
 
         default:
             break;
     }
-
-    res.statusCode = 201;
-    res.end();
 };
