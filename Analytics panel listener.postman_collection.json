@@ -1,0 +1,993 @@
+{
+	"info": {
+		"_postman_id": "7c1059ff-f715-4ece-b8fe-5fc6a8f28d20",
+		"name": "Analytics panel listener",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Happy flow",
+			"item": [
+				{
+					"name": "Test: Send start type",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"pm.test(\"Status equals 'success'\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"uuid_1\", pm.variables.replaceIn('{{$randomUUID}}'));\r",
+									"pm.collectionVariables.set(\"locale\", pm.variables.replaceIn('{{$randomLocale}}'));\r",
+									"var firstName = pm.variables.replaceIn('{{$randomFirstName}}');\r",
+									"var lastName = pm.variables.replaceIn('{{$randomLastName}}');\r",
+									"var login = firstName.substring(0,1).toLowerCase() + lastName.toLowerCase();\r",
+									"pm.collectionVariables.set(\"firstName\", firstName);\r",
+									"pm.collectionVariables.set(\"lastName\", lastName);\r",
+									"pm.collectionVariables.set(\"login\", login);\r",
+									"pm.globals.get(\"variable_key\");\r",
+									"pm.collectionVariables.set(\"lightTheme\", pm.variables.replaceIn('{{$randomBoolean}}'));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"start\",\r\n    \"uuid\": \"{{uuid_1}}\",\r\n    \"dashboard\":{\r\n        \"uid\": \"abcdefg\"\r\n    },\r\n    \"user\": {\r\n        \"login\": \"{{login}}\",\r\n        \"lightTheme\": {{lightTheme}},\r\n        \"timezone\": \"browser\",\r\n        \"locale\": \"{{locale}}\"\r\n    },\r\n    \"time\": {{$timestamp}}\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4555/event",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4555",
+							"path": [
+								"event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test: Send heartbeat type",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"pm.test(\"Status equals 'success'\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"pm.test(\"Session duration bigger than 0\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.sessionDuration).to.greaterThan(0);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Delay the request to have a session duration bigger than 0\r",
+									"setTimeout(() => {}, 1100);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"heartbeat\",\r\n    \"uuid\": \"{{uuid_1}}\",\r\n    \"dashboard\":{\r\n        \"uid\": \"abcdefg\"\r\n    },\r\n    \"user\": {\r\n        \"login\": \"{{login}}\",\r\n        \"lightTheme\": {{lightTheme}},\r\n        \"timezone\": \"browser\",\r\n        \"locale\": \"{{locale}}\"\r\n    },\r\n    \"time\": {{$timestamp}}\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4555/event",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4555",
+							"path": [
+								"event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test: Send second heartbeat",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"pm.test(\"Status equals 'success'\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"heartbeat\",\r\n    \"uuid\": \"{{uuid_1}}\",\r\n    \"dashboard\":{\r\n        \"uid\": \"abcdefg\"\r\n    },\r\n    \"user\": {\r\n        \"login\": \"{{login}}\",\r\n        \"lightTheme\": {{lightTheme}},\r\n        \"timezone\": \"browser\",\r\n        \"locale\": \"{{locale}}\"\r\n    },\r\n    \"time\": {{$timestamp}}\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4555/event",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4555",
+							"path": [
+								"event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test: Send end type",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"pm.test(\"Status equals 'success'\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"pm.test(\"Session duration bigger than 0\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.sessionDuration).to.greaterThan(0);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"end\",\r\n    \"uuid\": \"{{uuid_1}}\",\r\n    \"dashboard\":{\r\n        \"uid\": \"abcdefg\"\r\n    },\r\n    \"user\": {\r\n        \"login\": \"{{login}}\",\r\n        \"lightTheme\": {{lightTheme}},\r\n        \"timezone\": \"browser\",\r\n        \"locale\": \"{{locale}}\"\r\n    },\r\n    \"time\": {{$timestamp}}\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4555/event",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4555",
+							"path": [
+								"event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test: Send heartbeat type for unknown UUID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"pm.test(\"Status equals 'success'\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"pm.test(\"Session duration equals 0\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.sessionDuration).to.eql(0);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"uuid_2\", pm.variables.replaceIn('{{$randomUUID}}'));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"heartbeat\",\r\n    \"uuid\": \"{{uuid_2}}\",\r\n    \"dashboard\":{\r\n        \"uid\": \"abcdefg\"\r\n    },\r\n    \"user\": {\r\n        \"login\": \"{{login}}\",\r\n        \"lightTheme\": {{lightTheme}},\r\n        \"timezone\": \"browser\",\r\n        \"locale\": \"{{locale}}\"\r\n    },\r\n    \"time\": {{$timestamp}}\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4555/event",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4555",
+							"path": [
+								"event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test: Send end type for unknown UUID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"pm.test(\"Status equals 'success'\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.status).to.eql('success');\r",
+									"});\r",
+									"pm.test(\"Session duration equals 0\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.sessionDuration).to.eql(0);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"uuid_3\", pm.variables.replaceIn('{{$randomUUID}}'));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"end\",\r\n    \"uuid\": \"{{uuid_3}}\",\r\n    \"dashboard\":{\r\n        \"uid\": \"abcdefg\"\r\n    },\r\n    \"user\": {\r\n        \"login\": \"{{login}}\",\r\n        \"lightTheme\": {{lightTheme}},\r\n        \"timezone\": \"browser\",\r\n        \"locale\": \"{{locale}}\"\r\n    },\r\n    \"time\": {{$timestamp}}\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4555/event",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4555",
+							"path": [
+								"event"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Error handling",
+			"item": [
+				{
+					"name": "Test: Bad URL",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"pm.test(\"Status equals 'error'\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.status).to.eql('error');\r",
+									"});\r",
+									"pm.test(\"Error message equals 'Not found'\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql('Not found');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4555/xxxxxxx",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4555",
+							"path": [
+								"xxxxxxx"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test: Send bad JSON payload (syntax error)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Status equals 'error'\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.status).to.eql('error');\r",
+									"});\r",
+									"pm.test(\"Error message contains 'Unexpected string in JSON'\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.contain('Unexpected string in JSON at position');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"start\"\r\n    \"time\": {{$timestamp}}\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4555/event",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4555",
+							"path": [
+								"event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test: Send bad JSON payload (missing type)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"pm.test(\"Status equals 'error'\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.status).to.eql('error');\r",
+									"});\r",
+									"pm.test(\"Error message equals 'Missing or unknown type'\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql('Missing or unknown type');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uuid\": \"{{uuid_1}}\",\r\n    \"dashboard\":{\r\n        \"uid\": \"abcdefg\"\r\n    },\r\n    \"user\": {\r\n        \"login\": \"{{login}}\",\r\n        \"lightTheme\": {{lightTheme}},\r\n        \"timezone\": \"browser\",\r\n        \"locale\": \"{{locale}}\"\r\n    },\r\n    \"time\": {{$timestamp}}\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4555/event",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4555",
+							"path": [
+								"event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test: Send bad JSON payload (unknown type)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"pm.test(\"Status equals 'error'\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.status).to.eql('error');\r",
+									"});\r",
+									"pm.test(\"Error message equals 'Missing or unknown type'\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql('Missing or unknown type');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"doge\",\r\n    \"uuid\": \"{{uuid_1}}\",\r\n    \"dashboard\":{\r\n        \"uid\": \"abcdefg\"\r\n    },\r\n    \"user\": {\r\n        \"login\": \"{{login}}\",\r\n        \"lightTheme\": {{lightTheme}},\r\n        \"timezone\": \"browser\",\r\n        \"locale\": \"{{locale}}\"\r\n    },\r\n    \"time\": {{$timestamp}}\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4555/event",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4555",
+							"path": [
+								"event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test: Send start type for existing UUID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"pm.test(\"Status equals 'error'\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.status).to.eql('error');\r",
+									"});\r",
+									"pm.test(\"Error message equals 'Duplicate UUID'\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql('Duplicate UUID');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"start\",\r\n    \"uuid\": \"{{uuid_1}}\",\r\n    \"dashboard\":{\r\n        \"uid\": \"abcdefg\"\r\n    },\r\n    \"user\": {\r\n        \"login\": \"{{login}}\",\r\n        \"lightTheme\": {{lightTheme}},\r\n        \"timezone\": \"browser\",\r\n        \"locale\": \"{{locale}}\"\r\n    },\r\n    \"time\": {{$timestamp}}\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4555/event",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4555",
+							"path": [
+								"event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test: Send already ended UUID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"pm.test(\"Status equals 'error'\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.status).to.eql('error');\r",
+									"});\r",
+									"pm.test(\"Error message equals 'Session already ended'\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql('Session already ended');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"end\",\r\n    \"uuid\": \"{{uuid_1}}\",\r\n    \"dashboard\":{\r\n        \"uid\": \"abcdefg\"\r\n    },\r\n    \"user\": {\r\n        \"login\": \"{{login}}\",\r\n        \"lightTheme\": {{lightTheme}},\r\n        \"timezone\": \"browser\",\r\n        \"locale\": \"{{locale}}\"\r\n    },\r\n    \"time\": {{$timestamp}}\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4555/event",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4555",
+							"path": [
+								"event"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Session duration & time logging",
+			"item": [
+				{
+					"name": "Test: Send start type - Check session duration",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Session duration equals 0\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.sessionDuration).to.eql(0);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"uuid_5\", pm.variables.replaceIn('{{$randomUUID}}'));\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"start\",\r\n    \"uuid\": \"{{uuid_5}}\",\r\n    \"dashboard\":{\r\n        \"uid\": \"abcdefg\"\r\n    },\r\n    \"user\": {\r\n        \"login\": \"{{login}}\",\r\n        \"lightTheme\": {{lightTheme}},\r\n        \"timezone\": \"browser\",\r\n        \"locale\": \"{{locale}}\"\r\n    },\r\n    \"time\": 1611142210\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4555/event",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4555",
+							"path": [
+								"event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test: Send heartbeat type - Check session duration",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Session duration equals 10\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.sessionDuration).to.eql(10);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"heartbeat\",\r\n    \"uuid\": \"{{uuid_5}}\",\r\n    \"dashboard\":{\r\n        \"uid\": \"abcdefg\"\r\n    },\r\n    \"user\": {\r\n        \"login\": \"{{login}}\",\r\n        \"lightTheme\": {{lightTheme}},\r\n        \"timezone\": \"browser\",\r\n        \"locale\": \"{{locale}}\"\r\n    },\r\n    \"time\": 1611142220\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4555/event",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4555",
+							"path": [
+								"event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test: Send second heartbeat - Check session duration",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Session duration equals 20\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.sessionDuration).to.eql(20);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"heartbeat\",\r\n    \"uuid\": \"{{uuid_5}}\",\r\n    \"dashboard\":{\r\n        \"uid\": \"abcdefg\"\r\n    },\r\n    \"user\": {\r\n        \"login\": \"{{login}}\",\r\n        \"lightTheme\": {{lightTheme}},\r\n        \"timezone\": \"browser\",\r\n        \"locale\": \"{{locale}}\"\r\n    },\r\n    \"time\": 1611142230\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4555/event",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4555",
+							"path": [
+								"event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test: Send end type - Check session duration",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Session duration equals 30\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.sessionDuration).to.eql(30);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"end\",\r\n    \"uuid\": \"{{uuid_5}}\",\r\n    \"dashboard\":{\r\n        \"uid\": \"abcdefg\"\r\n    },\r\n    \"user\": {\r\n        \"login\": \"{{login}}\",\r\n        \"lightTheme\": {{lightTheme}},\r\n        \"timezone\": \"browser\",\r\n        \"locale\": \"{{locale}}\"\r\n    },\r\n    \"time\": 1611142240\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4555/event",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4555",
+							"path": [
+								"event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test: Send start type - Check logged time",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Logged time is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.logged_time).to.eql(1611142210);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"uuid_4\", pm.variables.replaceIn('{{$randomUUID}}'));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"start\",\r\n    \"uuid\": \"{{uuid_4}}\",\r\n    \"dashboard\":{\r\n        \"uid\": \"abcdefg\"\r\n    },\r\n    \"user\": {\r\n        \"login\": \"{{login}}\",\r\n        \"lightTheme\": {{lightTheme}},\r\n        \"timezone\": \"browser\",\r\n        \"locale\": \"{{locale}}\"\r\n    },\r\n    \"time\": 1611142210\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4555/event",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4555",
+							"path": [
+								"event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test: Send heartbeat type - Check logged time",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Logged time is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.logged_time).to.eql(1611142310);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"heartbeat\",\r\n    \"uuid\": \"{{uuid_4}}\",\r\n    \"dashboard\":{\r\n        \"uid\": \"abcdefg\"\r\n    },\r\n    \"user\": {\r\n        \"login\": \"{{login}}\",\r\n        \"lightTheme\": {{lightTheme}},\r\n        \"timezone\": \"browser\",\r\n        \"locale\": \"{{locale}}\"\r\n    },\r\n    \"time\": 1611142310\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4555/event",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4555",
+							"path": [
+								"event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test: Send end type - Check logged time",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Logged time is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.logged_time).to.eql(1611142410);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"end\",\r\n    \"uuid\": \"{{uuid_4}}\",\r\n    \"dashboard\":{\r\n        \"uid\": \"abcdefg\"\r\n    },\r\n    \"user\": {\r\n        \"login\": \"{{login}}\",\r\n        \"lightTheme\": {{lightTheme}},\r\n        \"timezone\": \"browser\",\r\n        \"locale\": \"{{locale}}\"\r\n    },\r\n    \"time\": 1611142410\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4555/event",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4555",
+							"path": [
+								"event"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Clean-up",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.clear();\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://www.exempla.com",
+					"protocol": "http",
+					"host": [
+						"www",
+						"exempla",
+						"com"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
