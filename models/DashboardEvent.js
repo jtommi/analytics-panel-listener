@@ -41,6 +41,4 @@ const DashboardEventSchema = new Schema({
     versionKey: false
 });
 
-const DashboardEvent = mongoose.model('DashboardEvent', DashboardEventSchema);
-
-module.exports = DashboardEvent;
+module.exports = mongoose.model('DashboardEvent', DashboardEventSchema);
