@@ -29,7 +29,19 @@ const server = app.listen(port, () => {
 // Handle dashboard event
 app.post('/event', handleEventController);
 
-// Handle random GET request
-app.get('*', (req, res) => {
-  res.status(200).send("It's working");
+// Handle any other request
+app.use((req, res, next) => {
+  const error = Error("Not found");
+  error.statusCode = 404;
+  next(error);
+});
+
+// Handle all errors
+app.use((error, req, res, next) => {
+  res.statusCode = error.statusCode || 500;
+  res.json({
+    error: {
+      message: error.message
+    }
+  });
 });
