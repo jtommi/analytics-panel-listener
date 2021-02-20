@@ -1,10 +1,10 @@
 {
-  "name": "macropower-analytics-panel-listener",
+  "name": "analytics-panel-listener",
   "version": "1.0.0",
   "description": "This is a server that listens for events from the Grafana plugin macropower-analytics-panel",
-  "license": "GPLv3",
+  "license": "GPL-3.0-or-later",
   "repository": {
-    "url": "https://github.com/jtommi/macropower-analytics-panel-listener"
+    "url": "https://github.com/jtommi/analytics-panel-listener"
   },
   "main": "index.js",
   "scripts": {
