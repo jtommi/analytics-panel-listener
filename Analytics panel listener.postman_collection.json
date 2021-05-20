@@ -55,12 +55,12 @@
 							"raw": "{\r\n    \"type\": \"start\",\r\n    \"uuid\": \"{{uuid_1}}\",\r\n    \"dashboard\":{\r\n        \"uid\": \"abcdefg\"\r\n    },\r\n    \"user\": {\r\n        \"login\": \"{{login}}\",\r\n        \"lightTheme\": {{lightTheme}},\r\n        \"timezone\": \"browser\",\r\n        \"locale\": \"{{locale}}\"\r\n    },\r\n    \"time\": {{$timestamp}}\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:4555/event",
-							"protocol": "http",
+							"raw": "{{apl_protocol}}://{{apl_host}}:{{apl_port}}/event",
+							"protocol": "{{apl_protocol}}",
 							"host": [
-								"localhost"
+								"{{apl_host}}"
 							],
-							"port": "4555",
+							"port": "{{apl_port}}",
 							"path": [
 								"event"
 							]
@@ -110,12 +110,12 @@
 							"raw": "{\r\n    \"type\": \"heartbeat\",\r\n    \"uuid\": \"{{uuid_1}}\",\r\n    \"dashboard\":{\r\n        \"uid\": \"abcdefg\"\r\n    },\r\n    \"user\": {\r\n        \"login\": \"{{login}}\",\r\n        \"lightTheme\": {{lightTheme}},\r\n        \"timezone\": \"browser\",\r\n        \"locale\": \"{{locale}}\"\r\n    },\r\n    \"time\": {{$timestamp}}\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:4555/event",
-							"protocol": "http",
+							"raw": "{{apl_protocol}}://{{apl_host}}:{{apl_port}}/event",
+							"protocol": "{{apl_protocol}}",
 							"host": [
-								"localhost"
+								"{{apl_host}}"
 							],
-							"port": "4555",
+							"port": "{{apl_port}}",
 							"path": [
 								"event"
 							]
@@ -151,12 +151,12 @@
 							"raw": "{\r\n    \"type\": \"heartbeat\",\r\n    \"uuid\": \"{{uuid_1}}\",\r\n    \"dashboard\":{\r\n        \"uid\": \"abcdefg\"\r\n    },\r\n    \"user\": {\r\n        \"login\": \"{{login}}\",\r\n        \"lightTheme\": {{lightTheme}},\r\n        \"timezone\": \"browser\",\r\n        \"locale\": \"{{locale}}\"\r\n    },\r\n    \"time\": {{$timestamp}}\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:4555/event",
-							"protocol": "http",
+							"raw": "{{apl_protocol}}://{{apl_host}}:{{apl_port}}/event",
+							"protocol": "{{apl_protocol}}",
 							"host": [
-								"localhost"
+								"{{apl_host}}"
 							],
-							"port": "4555",
+							"port": "{{apl_port}}",
 							"path": [
 								"event"
 							]
@@ -196,12 +196,12 @@
 							"raw": "{\r\n    \"type\": \"end\",\r\n    \"uuid\": \"{{uuid_1}}\",\r\n    \"dashboard\":{\r\n        \"uid\": \"abcdefg\"\r\n    },\r\n    \"user\": {\r\n        \"login\": \"{{login}}\",\r\n        \"lightTheme\": {{lightTheme}},\r\n        \"timezone\": \"browser\",\r\n        \"locale\": \"{{locale}}\"\r\n    },\r\n    \"time\": {{$timestamp}}\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:4555/event",
-							"protocol": "http",
+							"raw": "{{apl_protocol}}://{{apl_host}}:{{apl_port}}/event",
+							"protocol": "{{apl_protocol}}",
 							"host": [
-								"localhost"
+								"{{apl_host}}"
 							],
-							"port": "4555",
+							"port": "{{apl_port}}",
 							"path": [
 								"event"
 							]
@@ -251,12 +251,12 @@
 							"raw": "{\r\n    \"type\": \"heartbeat\",\r\n    \"uuid\": \"{{uuid_2}}\",\r\n    \"dashboard\":{\r\n        \"uid\": \"abcdefg\"\r\n    },\r\n    \"user\": {\r\n        \"login\": \"{{login}}\",\r\n        \"lightTheme\": {{lightTheme}},\r\n        \"timezone\": \"browser\",\r\n        \"locale\": \"{{locale}}\"\r\n    },\r\n    \"time\": {{$timestamp}}\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:4555/event",
-							"protocol": "http",
+							"raw": "{{apl_protocol}}://{{apl_host}}:{{apl_port}}/event",
+							"protocol": "{{apl_protocol}}",
 							"host": [
-								"localhost"
+								"{{apl_host}}"
 							],
-							"port": "4555",
+							"port": "{{apl_port}}",
 							"path": [
 								"event"
 							]
@@ -306,12 +306,12 @@
 							"raw": "{\r\n    \"type\": \"end\",\r\n    \"uuid\": \"{{uuid_3}}\",\r\n    \"dashboard\":{\r\n        \"uid\": \"abcdefg\"\r\n    },\r\n    \"user\": {\r\n        \"login\": \"{{login}}\",\r\n        \"lightTheme\": {{lightTheme}},\r\n        \"timezone\": \"browser\",\r\n        \"locale\": \"{{locale}}\"\r\n    },\r\n    \"time\": {{$timestamp}}\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:4555/event",
-							"protocol": "http",
+							"raw": "{{apl_protocol}}://{{apl_host}}:{{apl_port}}/event",
+							"protocol": "{{apl_protocol}}",
 							"host": [
-								"localhost"
+								"{{apl_host}}"
 							],
-							"port": "4555",
+							"port": "{{apl_port}}",
 							"path": [
 								"event"
 							]
@@ -352,12 +352,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4555/xxxxxxx",
-							"protocol": "http",
+							"raw": "{{apl_protocol}}://{{apl_host}}:{{apl_port}}/xxxxxxx",
+							"protocol": "{{apl_protocol}}",
 							"host": [
-								"localhost"
+								"{{apl_host}}"
 							],
-							"port": "4555",
+							"port": "{{apl_port}}",
 							"path": [
 								"xxxxxxx"
 							]
@@ -397,12 +397,12 @@
 							"raw": "{\r\n    \"type\": \"start\"\r\n    \"time\": {{$timestamp}}\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:4555/event",
-							"protocol": "http",
+							"raw": "{{apl_protocol}}://{{apl_host}}:{{apl_port}}/event",
+							"protocol": "{{apl_protocol}}",
 							"host": [
-								"localhost"
+								"{{apl_host}}"
 							],
-							"port": "4555",
+							"port": "{{apl_port}}",
 							"path": [
 								"event"
 							]
@@ -442,12 +442,12 @@
 							"raw": "{\r\n    \"uuid\": \"{{uuid_1}}\",\r\n    \"dashboard\":{\r\n        \"uid\": \"abcdefg\"\r\n    },\r\n    \"user\": {\r\n        \"login\": \"{{login}}\",\r\n        \"lightTheme\": {{lightTheme}},\r\n        \"timezone\": \"browser\",\r\n        \"locale\": \"{{locale}}\"\r\n    },\r\n    \"time\": {{$timestamp}}\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:4555/event",
-							"protocol": "http",
+							"raw": "{{apl_protocol}}://{{apl_host}}:{{apl_port}}/event",
+							"protocol": "{{apl_protocol}}",
 							"host": [
-								"localhost"
+								"{{apl_host}}"
 							],
-							"port": "4555",
+							"port": "{{apl_port}}",
 							"path": [
 								"event"
 							]
@@ -487,12 +487,12 @@
 							"raw": "{\r\n    \"type\": \"doge\",\r\n    \"uuid\": \"{{uuid_1}}\",\r\n    \"dashboard\":{\r\n        \"uid\": \"abcdefg\"\r\n    },\r\n    \"user\": {\r\n        \"login\": \"{{login}}\",\r\n        \"lightTheme\": {{lightTheme}},\r\n        \"timezone\": \"browser\",\r\n        \"locale\": \"{{locale}}\"\r\n    },\r\n    \"time\": {{$timestamp}}\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:4555/event",
-							"protocol": "http",
+							"raw": "{{apl_protocol}}://{{apl_host}}:{{apl_port}}/event",
+							"protocol": "{{apl_protocol}}",
 							"host": [
-								"localhost"
+								"{{apl_host}}"
 							],
-							"port": "4555",
+							"port": "{{apl_port}}",
 							"path": [
 								"event"
 							]
@@ -541,12 +541,12 @@
 							"raw": "{\r\n    \"type\": \"start\",\r\n    \"uuid\": \"{{uuid_1}}\",\r\n    \"dashboard\":{\r\n        \"uid\": \"abcdefg\"\r\n    },\r\n    \"user\": {\r\n        \"login\": \"{{login}}\",\r\n        \"lightTheme\": {{lightTheme}},\r\n        \"timezone\": \"browser\",\r\n        \"locale\": \"{{locale}}\"\r\n    },\r\n    \"time\": {{$timestamp}}\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:4555/event",
-							"protocol": "http",
+							"raw": "{{apl_protocol}}://{{apl_host}}:{{apl_port}}/event",
+							"protocol": "{{apl_protocol}}",
 							"host": [
-								"localhost"
+								"{{apl_host}}"
 							],
-							"port": "4555",
+							"port": "{{apl_port}}",
 							"path": [
 								"event"
 							]
@@ -586,12 +586,12 @@
 							"raw": "{\r\n    \"type\": \"end\",\r\n    \"uuid\": \"{{uuid_1}}\",\r\n    \"dashboard\":{\r\n        \"uid\": \"abcdefg\"\r\n    },\r\n    \"user\": {\r\n        \"login\": \"{{login}}\",\r\n        \"lightTheme\": {{lightTheme}},\r\n        \"timezone\": \"browser\",\r\n        \"locale\": \"{{locale}}\"\r\n    },\r\n    \"time\": {{$timestamp}}\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:4555/event",
-							"protocol": "http",
+							"raw": "{{apl_protocol}}://{{apl_host}}:{{apl_port}}/event",
+							"protocol": "{{apl_protocol}}",
 							"host": [
-								"localhost"
+								"{{apl_host}}"
 							],
-							"port": "4555",
+							"port": "{{apl_port}}",
 							"path": [
 								"event"
 							]
@@ -640,12 +640,12 @@
 							"raw": "{\r\n    \"type\": \"start\",\r\n    \"uuid\": \"{{uuid_5}}\",\r\n    \"dashboard\":{\r\n        \"uid\": \"abcdefg\"\r\n    },\r\n    \"user\": {\r\n        \"login\": \"{{login}}\",\r\n        \"lightTheme\": {{lightTheme}},\r\n        \"timezone\": \"browser\",\r\n        \"locale\": \"{{locale}}\"\r\n    },\r\n    \"time\": 1611142210\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:4555/event",
-							"protocol": "http",
+							"raw": "{{apl_protocol}}://{{apl_host}}:{{apl_port}}/event",
+							"protocol": "{{apl_protocol}}",
 							"host": [
-								"localhost"
+								"{{apl_host}}"
 							],
-							"port": "4555",
+							"port": "{{apl_port}}",
 							"path": [
 								"event"
 							]
@@ -687,12 +687,12 @@
 							"raw": "{\r\n    \"type\": \"heartbeat\",\r\n    \"uuid\": \"{{uuid_5}}\",\r\n    \"dashboard\":{\r\n        \"uid\": \"abcdefg\"\r\n    },\r\n    \"user\": {\r\n        \"login\": \"{{login}}\",\r\n        \"lightTheme\": {{lightTheme}},\r\n        \"timezone\": \"browser\",\r\n        \"locale\": \"{{locale}}\"\r\n    },\r\n    \"time\": 1611142220\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:4555/event",
-							"protocol": "http",
+							"raw": "{{apl_protocol}}://{{apl_host}}:{{apl_port}}/event",
+							"protocol": "{{apl_protocol}}",
 							"host": [
-								"localhost"
+								"{{apl_host}}"
 							],
-							"port": "4555",
+							"port": "{{apl_port}}",
 							"path": [
 								"event"
 							]
@@ -725,12 +725,12 @@
 							"raw": "{\r\n    \"type\": \"heartbeat\",\r\n    \"uuid\": \"{{uuid_5}}\",\r\n    \"dashboard\":{\r\n        \"uid\": \"abcdefg\"\r\n    },\r\n    \"user\": {\r\n        \"login\": \"{{login}}\",\r\n        \"lightTheme\": {{lightTheme}},\r\n        \"timezone\": \"browser\",\r\n        \"locale\": \"{{locale}}\"\r\n    },\r\n    \"time\": 1611142230\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:4555/event",
-							"protocol": "http",
+							"raw": "{{apl_protocol}}://{{apl_host}}:{{apl_port}}/event",
+							"protocol": "{{apl_protocol}}",
 							"host": [
-								"localhost"
+								"{{apl_host}}"
 							],
-							"port": "4555",
+							"port": "{{apl_port}}",
 							"path": [
 								"event"
 							]
@@ -763,12 +763,12 @@
 							"raw": "{\r\n    \"type\": \"end\",\r\n    \"uuid\": \"{{uuid_5}}\",\r\n    \"dashboard\":{\r\n        \"uid\": \"abcdefg\"\r\n    },\r\n    \"user\": {\r\n        \"login\": \"{{login}}\",\r\n        \"lightTheme\": {{lightTheme}},\r\n        \"timezone\": \"browser\",\r\n        \"locale\": \"{{locale}}\"\r\n    },\r\n    \"time\": 1611142240\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:4555/event",
-							"protocol": "http",
+							"raw": "{{apl_protocol}}://{{apl_host}}:{{apl_port}}/event",
+							"protocol": "{{apl_protocol}}",
 							"host": [
-								"localhost"
+								"{{apl_host}}"
 							],
-							"port": "4555",
+							"port": "{{apl_port}}",
 							"path": [
 								"event"
 							]
@@ -811,12 +811,12 @@
 							"raw": "{\r\n    \"type\": \"start\",\r\n    \"uuid\": \"{{uuid_4}}\",\r\n    \"dashboard\":{\r\n        \"uid\": \"abcdefg\"\r\n    },\r\n    \"user\": {\r\n        \"login\": \"{{login}}\",\r\n        \"lightTheme\": {{lightTheme}},\r\n        \"timezone\": \"browser\",\r\n        \"locale\": \"{{locale}}\"\r\n    },\r\n    \"time\": 1611142210\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:4555/event",
-							"protocol": "http",
+							"raw": "{{apl_protocol}}://{{apl_host}}:{{apl_port}}/event",
+							"protocol": "{{apl_protocol}}",
 							"host": [
-								"localhost"
+								"{{apl_host}}"
 							],
-							"port": "4555",
+							"port": "{{apl_port}}",
 							"path": [
 								"event"
 							]
@@ -858,12 +858,12 @@
 							"raw": "{\r\n    \"type\": \"heartbeat\",\r\n    \"uuid\": \"{{uuid_4}}\",\r\n    \"dashboard\":{\r\n        \"uid\": \"abcdefg\"\r\n    },\r\n    \"user\": {\r\n        \"login\": \"{{login}}\",\r\n        \"lightTheme\": {{lightTheme}},\r\n        \"timezone\": \"browser\",\r\n        \"locale\": \"{{locale}}\"\r\n    },\r\n    \"time\": 1611142310\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:4555/event",
-							"protocol": "http",
+							"raw": "{{apl_protocol}}://{{apl_host}}:{{apl_port}}/event",
+							"protocol": "{{apl_protocol}}",
 							"host": [
-								"localhost"
+								"{{apl_host}}"
 							],
-							"port": "4555",
+							"port": "{{apl_port}}",
 							"path": [
 								"event"
 							]
@@ -905,12 +905,12 @@
 							"raw": "{\r\n    \"type\": \"end\",\r\n    \"uuid\": \"{{uuid_4}}\",\r\n    \"dashboard\":{\r\n        \"uid\": \"abcdefg\"\r\n    },\r\n    \"user\": {\r\n        \"login\": \"{{login}}\",\r\n        \"lightTheme\": {{lightTheme}},\r\n        \"timezone\": \"browser\",\r\n        \"locale\": \"{{locale}}\"\r\n    },\r\n    \"time\": 1611142410\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:4555/event",
-							"protocol": "http",
+							"raw": "{{apl_protocol}}://{{apl_host}}:{{apl_port}}/event",
+							"protocol": "{{apl_protocol}}",
 							"host": [
-								"localhost"
+								"{{apl_host}}"
 							],
-							"port": "4555",
+							"port": "{{apl_port}}",
 							"path": [
 								"event"
 							]
@@ -947,8 +947,16 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.collectionVariables.clear();\r",
-							""
+							"pm.collectionVariables.unset(\"uuid_1\");\r",
+							"pm.collectionVariables.unset(\"uuid_2\");\r",
+							"pm.collectionVariables.unset(\"uuid_3\");\r",
+							"pm.collectionVariables.unset(\"uuid_4\");\r",
+							"pm.collectionVariables.unset(\"uuid_5\");\r",
+							"pm.collectionVariables.unset(\"locale\");\r",
+							"pm.collectionVariables.unset(\"firstName\");\r",
+							"pm.collectionVariables.unset(\"lastName\");\r",
+							"pm.collectionVariables.unset(\"login\");\r",
+							"pm.collectionVariables.unset(\"lightTheme\");\r",
 						],
 						"type": "text/javascript"
 					}
@@ -988,6 +996,20 @@
 					""
 				]
 			}
+		}
+	],
+	"variable": [
+		{
+			"key": "apl_protocol",
+			"value": "http"
+		},
+		{
+			"key": "apl_host",
+			"value": "localhost"
+		},
+		{
+			"key": "apl_port",
+			"value": "4333"
 		}
 	]
 }
