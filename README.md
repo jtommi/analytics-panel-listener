@@ -1,4 +1,6 @@
 # Analytics-panel-listener
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fjtommi%2Fanalytics-panel-listener.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fjtommi%2Fanalytics-panel-listener?ref=badge_shield)
+
 
 This is a server that listens for events from the Grafana plugin [macropower-analytics-panel](https://grafana.com/grafana/plugins/macropower-analytics-panel?src=tw) ([Github](https://github.com/MacroPower/macropower-analytics-panel))
 
@@ -21,3 +23,7 @@ The app currently only supports MongoDB for backend storage.
 The database settings have to be defined through environment variables.  
 The list of variables can be found in [devcontainer.env.sample](.devcontainer/devcontainer.env.sample).  
 If you want to use this with the devcontainer functionality of VSCode, simply remove the ".sample" from the end.  
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fjtommi%2Fanalytics-panel-listener.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fjtommi%2Fanalytics-panel-listener?ref=badge_large)
