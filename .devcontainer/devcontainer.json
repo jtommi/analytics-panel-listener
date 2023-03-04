@@ -14,15 +14,19 @@
 		".devcontainer/devcontainer.env"
 	],
 	// Set *default* container specific settings.json values on container create.
-	"settings": {
-		"editor.codeActionsOnSave": {
-			"source.fixAll.eslint": true
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"editor.codeActionsOnSave": {
+					"source.fixAll.eslint": true
+				}
+			},
+			"extensions": [
+				"dbaeumer.vscode-eslint"
+			]
 		}
 	},
 	// Add the IDs of extensions you want installed when the container is created.
-	"extensions": [
-		"dbaeumer.vscode-eslint"
-	],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [8080],
 	"appPort": [
